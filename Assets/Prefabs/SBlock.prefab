@@ -177,8 +177,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 30, y: 30}
-  m_Spacing: {x: 2.5, y: 2.5}
+  m_CellSize: {x: 34, y: 34}
+  m_Spacing: {x: 0.5, y: 0.5}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!1001 &180771901803842319

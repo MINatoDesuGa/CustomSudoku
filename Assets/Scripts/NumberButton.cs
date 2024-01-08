@@ -32,7 +32,18 @@ public class NumberButton : MonoBehaviour
         if (__selectedNumberCell != null)
         {
             __selectedNumberCell.cellText.text = numberText.text;
+
+            if(GameManager.isEditMode)
+            {
+                __selectedNumberCell.cellText.fontStyle = FontStyles.Bold;
+            } else
+            {
+                __selectedNumberCell.cellText.fontStyle = FontStyles.Normal;
+            }
+
             __selectedNumberCell.cellImage.color = Color.white;
+
+            GameManager.LockedButtons.Add(__selectedNumberCell.cellButton);
             GameManager.instance.SelectedNumberCell = null;
         }
     }
