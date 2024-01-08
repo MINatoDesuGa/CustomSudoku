@@ -36,6 +36,7 @@ public class NumberButton : MonoBehaviour
             if(GameManager.isEditMode)
             {
                 __selectedNumberCell.cellText.fontStyle = FontStyles.Bold;
+                GameManager.LockedButtons.Add(__selectedNumberCell.cellButton);
             } else
             {
                 __selectedNumberCell.cellText.fontStyle = FontStyles.Normal;
@@ -43,7 +44,7 @@ public class NumberButton : MonoBehaviour
 
             __selectedNumberCell.cellImage.color = Color.white;
 
-            GameManager.LockedButtons.Add(__selectedNumberCell.cellButton);
+            
             GameManager.instance.SelectedNumberCell = null;
         }
     }
