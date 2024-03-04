@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,25 +20,27 @@ public class GameManager : MonoBehaviour
     
     private void OnEditButtonClick()
     {
+        GlobalVariables.ResetSelectedNumberCell();
         switch(GlobalVariables.CurrentGameMode)
         {
             case GlobalVariables.GameMode.Play:
                 GlobalVariables.CurrentGameMode = GlobalVariables.GameMode.Edit;
                 _editButtonText.text = "E";
+                HandleButtonLock(true);
                 break;
             case GlobalVariables.GameMode.Edit:
                 GlobalVariables.CurrentGameMode = GlobalVariables.GameMode.Play;
                 _editButtonText.text = "P";
+                HandleButtonLock(false);
                 break;
         }
 
-        HandleButtonLock();
+        
     }
 
-    private void HandleButtonLock()
+    private void HandleButtonLock(bool active)
     {
-        bool active = (GlobalVariables.CurrentGameMode == GlobalVariables.GameMode.Edit);
-        foreach(Button button in GlobalVariables.LockedButtons)
+        foreach(Button button in GlobalVariables.LockableButtons)
         {
             button.interactable = active;
         }

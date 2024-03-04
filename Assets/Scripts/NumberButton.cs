@@ -38,11 +38,10 @@ public class NumberButton : MonoBehaviour
                 break;
             case GlobalVariables.GameMode.Edit:
                 GlobalVariables.SelectedNumberCell.CellText.fontStyle = FontStyles.Bold;
-                GlobalVariables.LockedButtons.Add(GlobalVariables.SelectedNumberCell.CellButton);
+                GlobalVariables.LockableButtons.Add(GlobalVariables.SelectedNumberCell.CellButton);
                 break;
         }
 
-        GlobalVariables.SelectedNumberCell.CellImage.color = Color.white;            
-        GlobalVariables.SelectedNumberCell = null;
+        GlobalVariables.ResetSelectedNumberCell();
     }
 }

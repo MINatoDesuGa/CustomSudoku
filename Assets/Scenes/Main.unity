@@ -5835,9 +5835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f74553cd625c948bc19bfcd0483bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedNumberCell: {fileID: 0}
-  editButton: {fileID: 1474232744}
-  editButtonText: {fileID: 1379190463}
+  _editButton: {fileID: 1474232744}
+  _editButtonText: {fileID: 1379190463}
 --- !u!4 &2125121263
 Transform:
   m_ObjectHideFlags: 0

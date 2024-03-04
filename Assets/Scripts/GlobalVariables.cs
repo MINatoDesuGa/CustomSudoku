@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public static class GlobalVariables
@@ -10,6 +11,14 @@ public static class GlobalVariables
     }
 
     public static GameMode CurrentGameMode = GameMode.Edit;
-    public static HashSet<Button> LockedButtons = new HashSet<Button>();
+    public static HashSet<Button> LockableButtons = new HashSet<Button>();
     public static NumberCell SelectedNumberCell;
+
+    public static void ResetSelectedNumberCell()
+    {
+        if (SelectedNumberCell == null) return;
+
+        SelectedNumberCell.CellImage.color = Color.white;
+        SelectedNumberCell = null;
+    }
 }

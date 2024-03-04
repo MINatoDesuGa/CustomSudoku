@@ -20,6 +20,7 @@ public class NumberCell : MonoBehaviour
 
     private void OnCellButtonClick()
     {
+        GlobalVariables.ResetSelectedNumberCell();
         GlobalVariables.SelectedNumberCell = this;
         CellImage.color = Color.yellow;
     }
