@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,51 +5,43 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-
-    public NumberCell SelectedNumberCell;
-
-    [SerializeField] private Button editButton;
-
-    [SerializeField] private TMP_Text editButtonText;
-
-    public static bool isEditMode = true;
-    public static HashSet<Button> LockedButtons = new HashSet<Button>();
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(instance);
-    }
+    [SerializeField] 
+    private Button _editButton;
+    [SerializeField] 
+    private TMP_Text _editButtonText;
 
     private void OnEnable()
     {
-        editButton.onClick.AddListener(OnEditButtonClick);
+        _editButton.onClick.AddListener(OnEditButtonClick);
     }
     private void OnDisable()
     {
-        editButton.onClick.RemoveListener(OnEditButtonClick);
+        _editButton.onClick.RemoveListener(OnEditButtonClick);
     }
     
     private void OnEditButtonClick()
     {
-        if(isEditMode)
+        switch(GlobalVariables.CurrentGameMode)
         {
-            isEditMode = false;
-            editButtonText.text = "P";
-        } else
-        {
-            isEditMode = true;
-            editButtonText.text = "E";
+            case GlobalVariables.GameMode.Play:
+                GlobalVariables.CurrentGameMode = GlobalVariables.GameMode.Edit;
+                _editButtonText.text = "E";
+                break;
+            case GlobalVariables.GameMode.Edit:
+                GlobalVariables.CurrentGameMode = GlobalVariables.GameMode.Play;
+                _editButtonText.text = "P";
+                break;
         }
+
         HandleButtonLock();
     }
 
     private void HandleButtonLock()
     {
-        foreach(Button button in LockedButtons)
+        bool active = (GlobalVariables.CurrentGameMode == GlobalVariables.GameMode.Edit);
+        foreach(Button button in GlobalVariables.LockedButtons)
         {
-            button.interactable = isEditMode;
+            button.interactable = active;
         }
     }
 }

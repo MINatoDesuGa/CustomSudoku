@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb6b7323023a52478d71fdddd2d4a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellButton: {fileID: 2330709399894446546}
-  cellImage: {fileID: 1808367480756117957}
-  cellText: {fileID: 7882269337916355029}
+  CellButton: {fileID: 2330709399894446546}
+  CellImage: {fileID: 1808367480756117957}
+  CellText: {fileID: 7882269337916355029}
 --- !u!114 &1808367480756117957
 MonoBehaviour:
   m_ObjectHideFlags: 0

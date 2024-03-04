@@ -1,51 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NumberButton : MonoBehaviour
 {
-    [SerializeField] private Button numberButton;
-    [SerializeField] private TMP_Text numberText;
+    [SerializeField] 
+    private Button _numberButton;
+    [SerializeField] 
+    private TMP_Text _numberText;
 
     private int number;
 
     private void Start()
     {
-        number = int.Parse(numberText.text);
+        number = int.Parse(_numberText.text);
     }
 
     private void OnEnable()
     {
-        numberButton.onClick.AddListener(OnNumberButtonClick);
+        _numberButton.onClick.AddListener(OnNumberButtonClick);
     }
 
     private void OnDisable()
     {
-        numberButton.onClick.RemoveListener(OnNumberButtonClick);
+        _numberButton.onClick.RemoveListener(OnNumberButtonClick);
     }
 
     private void OnNumberButtonClick()
     {
-        NumberCell __selectedNumberCell = GameManager.instance.SelectedNumberCell;
-        if (__selectedNumberCell != null)
-        {
-            __selectedNumberCell.cellText.text = numberText.text;
+        if (GlobalVariables.SelectedNumberCell == null) return;
 
-            if(GameManager.isEditMode)
-            {
-                __selectedNumberCell.cellText.fontStyle = FontStyles.Bold;
-                GameManager.LockedButtons.Add(__selectedNumberCell.cellButton);
-            } else
-            {
-                __selectedNumberCell.cellText.fontStyle = FontStyles.Normal;
-            }
+        GlobalVariables.SelectedNumberCell.CellText.text = _numberText.text;
 
-            __selectedNumberCell.cellImage.color = Color.white;
-
-            
-            GameManager.instance.SelectedNumberCell = null;
+        switch (GlobalVariables.CurrentGameMode) {
+            case GlobalVariables.GameMode.Play:
+                GlobalVariables.SelectedNumberCell.CellText.fontStyle = FontStyles.Normal;
+                break;
+            case GlobalVariables.GameMode.Edit:
+                GlobalVariables.SelectedNumberCell.CellText.fontStyle = FontStyles.Bold;
+                GlobalVariables.LockedButtons.Add(GlobalVariables.SelectedNumberCell.CellButton);
+                break;
         }
+
+        GlobalVariables.SelectedNumberCell.CellImage.color = Color.white;            
+        GlobalVariables.SelectedNumberCell = null;
     }
 }

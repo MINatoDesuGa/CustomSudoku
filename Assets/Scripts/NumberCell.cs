@@ -1,28 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class NumberCell : MonoBehaviour
 {
-    public Button cellButton;
-    public Image cellImage;
-    public TMP_Text cellText;
+    public Button CellButton;
+    public Image CellImage;
+    public TMP_Text CellText;
 
     private void OnEnable()
     {
-        cellButton.onClick.AddListener(OnCellButtonClick);
+        CellButton.onClick.AddListener(OnCellButtonClick);
     }
 
     private void OnDisable()
     {
-        cellButton.onClick.RemoveListener(OnCellButtonClick);
+        CellButton.onClick.RemoveListener(OnCellButtonClick);
     }
 
     private void OnCellButtonClick()
     {
-        GameManager.instance.SelectedNumberCell = this;
-        cellImage.color = Color.yellow;
+        GlobalVariables.SelectedNumberCell = this;
+        CellImage.color = Color.yellow;
     }
 }
