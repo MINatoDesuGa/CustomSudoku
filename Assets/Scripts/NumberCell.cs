@@ -21,7 +21,9 @@ public class NumberCell : MonoBehaviour
     private void OnCellButtonClick()
     {
         GlobalVariables.ResetSelectedNumberCell();
+        //sets selected number cell to this cell
         GlobalVariables.SelectedNumberCell = this;
+        //sets color to yellow to highlight
         CellImage.color = Color.yellow;
     }
 }
