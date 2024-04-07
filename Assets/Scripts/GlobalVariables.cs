@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public static class GlobalVariables
 {
+    public static Action NumberCellClicked;
+    public static Action NumberCellEntered;
+
+    public static int WinTrack;
     public enum GameMode
     {
         Play,

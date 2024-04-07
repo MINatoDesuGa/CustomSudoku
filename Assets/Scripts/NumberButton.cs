@@ -50,5 +50,6 @@ public class NumberButton : MonoBehaviour
         }
         
         GlobalVariables.ResetSelectedNumberCell();
+        GlobalVariables.NumberCellEntered?.Invoke();
     }
 }
