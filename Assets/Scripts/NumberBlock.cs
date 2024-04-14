@@ -9,14 +9,14 @@ public class NumberBlock : MonoBehaviour
 
     private void OnEnable()
     {
-        GlobalVariables.NumberCellClicked += HighlightSameNumbers;
-        GlobalVariables.NumberCellEntered += ResetHighlightedNumbers;
+        GameEventManager.NumberCellClicked += HighlightSameNumbers;
+        GameEventManager.NumberCellEntered += ResetHighlightedNumbers;
     }
 
     private void OnDisable()
     {
-        GlobalVariables.NumberCellClicked -= HighlightSameNumbers;
-        GlobalVariables.NumberCellEntered -= ResetHighlightedNumbers;
+        GameEventManager.NumberCellClicked -= HighlightSameNumbers;
+        GameEventManager.NumberCellEntered -= ResetHighlightedNumbers;
     }
 
     private void HighlightSameNumbers()

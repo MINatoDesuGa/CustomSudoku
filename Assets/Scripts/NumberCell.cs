@@ -27,6 +27,6 @@ public class NumberCell : MonoBehaviour
         //sets color to yellow to highlight
         CellImage.color = Color.yellow;
 
-        GlobalVariables.NumberCellClicked?.Invoke();
+        GameEventManager.NumberCellClicked?.Invoke();
     }
 }

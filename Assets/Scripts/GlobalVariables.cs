@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public static class GlobalVariables
 {
-    public static Action NumberCellClicked;
-    public static Action NumberCellEntered;
-
     public static int WinTrack;
     public enum GameMode
     {
