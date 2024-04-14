@@ -8,11 +8,13 @@ public class NumberButton : MonoBehaviour
     [SerializeField] 
     private TMP_Text _numberText;
 
-    private int number;
+    private int _number;
 
+    [SerializeField]
+    private SudokuValidator _sudokuValidator;
     private void Start()
     {
-        number = int.Parse(_numberText.text);
+        _number = int.Parse(_numberText.text);
     }
 
     private void OnEnable()
@@ -32,6 +34,11 @@ public class NumberButton : MonoBehaviour
 
         //this sets the selected number cell text with the number button text that is clicked
         GlobalVariables.SelectedNumberCell.CellText.text = _numberText.text;
+        _sudokuValidator.UpdateCellValue(
+                GlobalVariables.SelectedNumberCell.CellRow,
+                GlobalVariables.SelectedNumberCell.CellColumn,
+                _number
+            );
 
         //checks current game mode
         switch (GlobalVariables.CurrentGameMode) {

@@ -8,6 +8,9 @@ public class NumberCell : MonoBehaviour
     public Image CellImage;
     public TMP_Text CellText;
 
+    public int CellRow;
+    public int CellColumn;
+
     private void OnEnable()
     {
         CellButton.onClick.AddListener(OnCellButtonClick);
