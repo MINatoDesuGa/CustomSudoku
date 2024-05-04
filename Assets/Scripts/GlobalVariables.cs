@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public static class GlobalVariables
 {
-    public static int WinTrack;
     public enum GameMode
     {
         Play,

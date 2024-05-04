@@ -13,7 +13,7 @@ public class SudokuValidator : MonoBehaviour
     {
         _cell[row, col] = value;
 
-        GridStatus();
+       // GridStatus();
         ValidateOnCellsFilled();
     }
 
@@ -50,7 +50,14 @@ public class SudokuValidator : MonoBehaviour
             if (!_isRowValid) break;
             if (!_isColValid) break;
         }
-        Debug.Log($"IsRowValid: {_isRowValid}\n IsColValid: {_isColValid}");
+
+        if( _isRowValid && _isColValid) {
+            Debug.Log("Solved!");
+            PlayerPrefs.SetInt("SolveCount", PlayerPrefs.GetInt("SolveCount") + 1);
+            GameEventManager.OnGameOver?.Invoke();
+        }
+
+        //Debug.Log($"IsRowValid: {_isRowValid}\n IsColValid: {_isColValid}");
     }
 
     private void GridStatus()

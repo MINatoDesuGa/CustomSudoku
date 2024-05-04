@@ -11,12 +11,14 @@ public class NumberBlock : MonoBehaviour
     {
         GameEventManager.NumberCellClicked += HighlightSameNumbers;
         GameEventManager.NumberCellEntered += ResetHighlightedNumbers;
+        GameEventManager.OnReset += OnReset;
     }
 
     private void OnDisable()
     {
         GameEventManager.NumberCellClicked -= HighlightSameNumbers;
         GameEventManager.NumberCellEntered -= ResetHighlightedNumbers;
+        GameEventManager.OnReset -= OnReset;
     }
 
     private void HighlightSameNumbers()
@@ -47,6 +49,14 @@ public class NumberBlock : MonoBehaviour
             {
                 cell.CellImage.color = Color.white;
             }
+        }
+    }
+    private void OnReset()
+    {
+        foreach (var cell in _numberCells)
+        {
+            cell.CellText.text = string.Empty;
+            
         }
     }
 }

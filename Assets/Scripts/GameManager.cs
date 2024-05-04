@@ -6,16 +6,36 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] 
     private Button _editButton;
+    [SerializeField]
+    private Button _resetHUD;
     [SerializeField] 
     private TMP_Text _editButtonText;
+
+    [Header("GameOver Panel")]
+    [SerializeField]
+    private GameObject _gameOverPanel;
+    [SerializeField]
+    private TMP_Text _solveCountText;
+    [SerializeField]
+    private Button _resetButton;
+    [SerializeField]
+    private Button _quitButton;
 
     private void OnEnable()
     {
         _editButton.onClick.AddListener(OnEditButtonClick);
+        GameEventManager.OnGameOver += OnGameOver;
+        _resetButton.onClick.AddListener(OnResetClick);
+        _quitButton.onClick.AddListener(OnQuitClick);
+        _resetHUD.onClick.AddListener(OnResetClick);
     }
     private void OnDisable()
     {
         _editButton.onClick.RemoveListener(OnEditButtonClick);
+        GameEventManager.OnGameOver -= OnGameOver;
+        _resetHUD.onClick.RemoveListener(OnResetClick);
+        _resetButton.onClick.RemoveListener(OnResetClick);
+        _quitButton.onClick.RemoveListener(OnQuitClick);
     }
     
     private void OnEditButtonClick()
@@ -58,5 +78,21 @@ public class GameManager : MonoBehaviour
         {
             button.interactable = active;
         }
+    }
+    private void OnResetClick()
+    {
+        GameEventManager.OnReset?.Invoke();
+        HandleButtonLock(true);
+        GlobalVariables.LockableButtons.Clear();
+        _gameOverPanel.SetActive(false);
+    }
+    private void OnQuitClick()
+    {
+        Application.Quit();
+    }
+    private void OnGameOver()
+    {
+        _gameOverPanel.SetActive(true);
+        _solveCountText.text = "Solve Count\n"+ PlayerPrefs.GetInt("SolveCount").ToString();
     }
 }

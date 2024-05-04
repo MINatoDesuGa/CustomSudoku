@@ -23,7 +23,6 @@ public class NumberCell : MonoBehaviour
 
     private void OnCellButtonClick()
     {
-        GlobalVariables.WinTrack = 0;
         GlobalVariables.ResetSelectedNumberCell();
         //sets selected number cell to this cell
         GlobalVariables.SelectedNumberCell = this;
