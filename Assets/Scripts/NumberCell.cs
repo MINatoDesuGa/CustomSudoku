@@ -23,12 +23,17 @@ public class NumberCell : MonoBehaviour
 
     private void OnCellButtonClick()
     {
-        GlobalVariables.ResetSelectedNumberCell();
+        GlobalVariables.ResetSelectedNumberCell();       
         //sets selected number cell to this cell
         GlobalVariables.SelectedNumberCell = this;
         //sets color to yellow to highlight
         CellImage.color = Color.yellow;
 
         GameEventManager.NumberCellClicked?.Invoke();
+    }
+    private void ClearCell()
+    {
+        CellText.text = string.Empty;
+        CellImage.color = Color.white;
     }
 }

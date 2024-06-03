@@ -11,6 +11,7 @@ public class NumberBlock : MonoBehaviour
     {
         GameEventManager.NumberCellClicked += HighlightSameNumbers;
         GameEventManager.NumberCellEntered += ResetHighlightedNumbers;
+        TouchFunctions.OnDoubleTap += ResetHighlightedNumbers;
         GameEventManager.OnReset += OnReset;
     }
 
@@ -18,6 +19,7 @@ public class NumberBlock : MonoBehaviour
     {
         GameEventManager.NumberCellClicked -= HighlightSameNumbers;
         GameEventManager.NumberCellEntered -= ResetHighlightedNumbers;
+        TouchFunctions.OnDoubleTap -= ResetHighlightedNumbers;
         GameEventManager.OnReset -= OnReset;
     }
 
